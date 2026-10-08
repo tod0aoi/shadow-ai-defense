@@ -1,0 +1,107 @@
+[
+  {
+    "id": "TC-01",
+    "name": "Normal Benign Question",
+    "prompt": "What is the capital city of Australia and what is its climate like?",
+    "expected_sensitive": false,
+    "expected_categories": []
+  },
+  {
+    "id": "TC-02",
+    "name": "PII Email Exposure",
+    "prompt": "Please draft a follow-up email for customer alice.cooper@corporate-client.org regarding the delayed invoice.",
+    "expected_sensitive": true,
+    "expected_categories": ["PII"]
+  },
+  {
+    "id": "TC-03",
+    "name": "PII Phone Number Exposure",
+    "prompt": "Call the support team lead at +1 (555) 234-5678 immediately to escalate the outage.",
+    "expected_sensitive": true,
+    "expected_categories": ["PII"]
+  },
+  {
+    "id": "TC-04",
+    "name": "Explicit Password Exposure",
+    "prompt": "Here is the master admin password: password=SuperK3y!992817#P@ssword to access the bastion host.",
+    "expected_sensitive": true,
+    "expected_categories": ["CREDENTIAL"]
+  },
+  {
+    "id": "TC-05",
+    "name": "High Entropy API Token",
+    "prompt": "I need help with this API call using api_key=\"custom_token_9876543210_9876543210_abcdef1234567890abcdef\".",
+    "expected_sensitive": true,
+    "expected_categories": ["CREDENTIAL"]
+  },
+  {
+    "id": "TC-06",
+    "name": "AWS Access Key Leakage",
+    "prompt": "Configure my S3 bucket with AWS_ACCESS_KEY_ID = AKIAIOSFODNN7EXAMPLE for automated nightly backups.",
+    "expected_sensitive": true,
+    "expected_categories": ["SECRET"]
+  },
+  {
+    "id": "TC-07",
+    "name": "SSH RSA Private Key Block",
+    "prompt": "Convert this key to PPK format:\n-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEA0Y7...[truncated mock key data]...f8d9\n-----END RSA PRIVATE KEY-----",
+    "expected_sensitive": true,
+    "expected_categories": ["SECRET"]
+  },
+  {
+    "id": "TC-08",
+    "name": "Database Connection URI with Auth",
+    "prompt": "Debug our database connection issue: postgresql://dbadmin:P@ssw0rd9988@10.0.1.50:5432/finance_prod",
+    "expected_sensitive": true,
+    "expected_categories": ["INFRASTRUCTURE"]
+  },
+  {
+    "id": "TC-09",
+    "name": "RFC 1918 Private IPv4 Address",
+    "prompt": "The internal microservice is listening on private host 192.168.10.45 port 8080.",
+    "expected_sensitive": true,
+    "expected_categories": ["INFRASTRUCTURE"]
+  },
+  {
+    "id": "TC-10",
+    "name": "Proprietary Source Code Submission",
+    "prompt": "def calculate_quarterly_bonus(employee_id, salary):\n    tax_rate = 0.28\n    bonus = salary * 0.15\n    return bonus * (1 - tax_rate)",
+    "expected_sensitive": true,
+    "expected_categories": ["CODE"]
+  },
+  {
+    "id": "TC-11",
+    "name": "Confidential Document Text",
+    "prompt": "THIS MEMO IS STRICTLY CONFIDENTIAL AND PROPRIETARY. Merger talks with Vendor X will commence next quarter.",
+    "expected_sensitive": true,
+    "expected_categories": ["CONFIDENTIAL"]
+  },
+  {
+    "id": "TC-12",
+    "name": "Multiple Sensitive Categories (Critical Breach)",
+    "prompt": "URGENT & CONFIDENTIAL: Contact dev@corp.internal. Deploy key AKIAI44QH8DHBEXAMPLE to private server 10.2.40.11.",
+    "expected_sensitive": true,
+    "expected_categories": ["SECRET", "INFRASTRUCTURE", "PII", "CONFIDENTIAL"]
+  },
+  {
+    "id": "TC-13",
+    "name": "Benign Text with Potential False Positive Triggers",
+    "prompt": "In section 192.168 of the encyclopedia, the author discusses the history of the year 2026.",
+    "expected_sensitive": false,
+    "expected_categories": []
+  },
+  {
+    "id": "TC-14",
+    "name": "National Identifier (US SSN)",
+    "prompt": "Verify patient identity with SSN 456-78-9012 before releasing health records.",
+    "expected_sensitive": true,
+    "expected_categories": ["PII"]
+  },
+  {
+    "id": "TC-15",
+    "name": "Mixed Safe Prose + Sensitive Secret",
+    "prompt": "Can you summarize this recipe for chocolate cake? Also note my stripe token is token=\"mock_live_sec_51AbcDefGhIjKlMnOpQrStUvWxYz\".",
+    "expected_sensitive": true,
+    "expected_categories": ["CREDENTIAL"]
+  }
+]

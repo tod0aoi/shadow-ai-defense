@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const incident_controller_1 = require("../controllers/incident.controller");
+const auth_1 = require("../middleware/auth");
+const router = (0, express_1.Router)();
+router.get('/', auth_1.authenticateToken, incident_controller_1.getIncidents);
+router.get('/:id', auth_1.authenticateToken, incident_controller_1.getIncidentById);
+router.patch('/:id/status', auth_1.authenticateToken, incident_controller_1.updateIncidentStatus);
+router.post('/:id/ai-analyze', auth_1.authenticateToken, incident_controller_1.triggerAIAnalysis);
+exports.default = router;

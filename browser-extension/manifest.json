@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Shadow AI Defense - Endpoint Telemetry Agent",
+  "version": "1.0.0",
+  "description": "Monitors and analyzes generative AI prompt submissions in real-time to detect and mitigate sensitive organizational data leakage.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://localhost:5000/*",
+    "http://127.0.0.1:5000/*",
+    "https://chatgpt.com/*",
+    "https://*.openai.com/*",
+    "https://gemini.google.com/*",
+    "https://claude.ai/*",
+    "https://copilot.microsoft.com/*",
+    "https://*.anthropic.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://*.openai.com/*",
+        "https://gemini.google.com/*",
+        "https://claude.ai/*",
+        "https://copilot.microsoft.com/*",
+        "https://*.anthropic.com/*",
+        "http://localhost:*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Shadow AI Defense Agent"
+  }
+}

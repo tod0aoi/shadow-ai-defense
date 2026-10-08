@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "1. Launch Backend Server (Port 5000)",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/backend/dist/index.js",
+      "cwd": "${workspaceFolder}/backend",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "5000"
+      },
+      "preLaunchTask": "tsc: build - backend/tsconfig.json"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "2. Run End-to-End Verification Test Suite",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/tests/run_e2e_full_verification.js",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "python",
+      "request": "launch",
+      "name": "3. Run Detection Engine Benchmark (Python)",
+      "program": "${workspaceFolder}/tests/test_detection_engine.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ]
+}

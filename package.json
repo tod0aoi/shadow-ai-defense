@@ -1,0 +1,22 @@
+{
+  "name": "shadow-ai-defense-platform",
+  "version": "1.0.0",
+  "description": "AI-Powered Shadow AI Data Leakage Detection and Risk Assessment Platform",
+  "main": "backend/dist/index.js",
+  "scripts": {
+    "start": "node backend/dist/index.js",
+    "dev": "npm --prefix backend run dev",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "test": "node tests/run_e2e_full_verification.js",
+    "test:benchmark": "python tests/test_detection_engine.py",
+    "test:all": "python tests/test_detection_engine.py && node tests/run_e2e_full_verification.js"
+  },
+  "keywords": [
+    "cybersecurity",
+    "shadow-ai",
+    "dlp",
+    "risk-assessment"
+  ],
+  "author": "Cybersecurity Engineering Team",
+  "license": "ISC"
+}
