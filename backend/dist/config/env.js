@@ -7,7 +7,9 @@ exports.config = void 0;
 const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
 dotenv_1.default.config({ path: path_1.default.resolve(__dirname, '../../.env') });
-const defaultSqliteDir = path_1.default.resolve(process.env.LOCALAPPDATA || 'C:/Users/Admin/AppData/Local', 'shadow_ai_defense');
+const defaultSqliteDir = process.env.LOCALAPPDATA
+    ? path_1.default.resolve(process.env.LOCALAPPDATA, 'shadow_ai_defense')
+    : path_1.default.resolve(__dirname, '../../database');
 exports.config = {
     port: parseInt(process.env.PORT || '5000', 10),
     nodeEnv: process.env.NODE_ENV || 'development',

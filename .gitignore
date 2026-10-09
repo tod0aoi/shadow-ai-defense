@@ -34,6 +34,7 @@ htmlcov/
 database/*.db
 database/*.sqlite
 database/*.db-journal
+database/*.txt
 
 # Logs & Temporary Files
 *.log

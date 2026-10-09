@@ -3,10 +3,9 @@ import path from 'path';
 
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
-const defaultSqliteDir = path.resolve(
-  process.env.LOCALAPPDATA || 'C:/Users/Admin/AppData/Local',
-  'shadow_ai_defense'
-);
+const defaultSqliteDir = process.env.LOCALAPPDATA
+  ? path.resolve(process.env.LOCALAPPDATA, 'shadow_ai_defense')
+  : path.resolve(__dirname, '../../database');
 
 export const config = {
   port: parseInt(process.env.PORT || '5000', 10),

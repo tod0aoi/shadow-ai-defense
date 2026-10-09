@@ -1,0 +1,12 @@
+node_modules
+*/node_modules
+*.sqlite
+*.db
+*.db-journal
+database/*.db
+database/*.sqlite
+database/*.db-journal
+*.log
+.git
+.vscode
+.system_generated

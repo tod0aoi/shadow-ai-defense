@@ -83,8 +83,8 @@ async function startServer() {
         await database_1.db.initSchema();
         await database_1.db.seedDefaults();
         console.log('[+] Database verified and ready.');
-        app.listen(env_1.config.port, () => {
-            console.log(`[+] Shadow AI Defense Backend running on port ${env_1.config.port}`);
+        app.listen(env_1.config.port, '0.0.0.0', () => {
+            console.log(`[+] Shadow AI Defense Backend running on port ${env_1.config.port} (0.0.0.0)`);
             console.log(`[+] Environment: ${env_1.config.nodeEnv}`);
             console.log(`[+] Base API: http://localhost:${env_1.config.port}/api/v1`);
         });
